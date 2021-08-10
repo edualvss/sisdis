@@ -6,7 +6,7 @@ Olá mundo, Luiz Z!
 Olá mundo, Jonath!
 Olá mundo, George!
 Olá mundo, Matheus Emanuel!
+Olá mundo, Lucas Cunha!
 Olá mundo, Teddy!
-
 
 
