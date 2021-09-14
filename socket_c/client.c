@@ -52,11 +52,38 @@ int main(int argc, char const *argv[]) {
     }
 
     // 3. Enviar e receber mensagens
+// Servidor pede o nome
+    valread = read(sock, buffer, 1024);
+    printf("Echo: %s", buffer);
+// Cliente envia o nome
+    char nome[100];
+    scanf("%s", nome);
+    send(sock , nome , strlen(nome) , 0 );
+
+// Servidor pede a idade
+    valread = read(sock, buffer, 1024);
+    printf("Echo: %s", buffer);
+// Cliente envia a idade
+    char idade[5];
+    scanf("%s", idade);
+    send(sock , idade , strlen(idade) , 0 );
+
+
+// Servidor pede a altura
+    valread = read(sock, buffer, 1024);
+    printf("Echo: %s", buffer);
+// Cliente envia a idade
+    char altura[8];
+    scanf("%s", altura);
+    send(sock , altura , strlen(altura) , 0 );
+
+
+/*
     send(sock , hello , strlen(hello) , 0 );
     printf("Client Message sent\n");
     valread = read( sock , buffer, 1024);
     printf("Mensagem recebida: %s\n",buffer );
-
+*/
 
     // 4. Fechar conexão
     close(sock);
