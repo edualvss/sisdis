@@ -74,13 +74,36 @@ int main(int argc, char const *argv[]) {
 		exit(EXIT_FAILURE);
 	}
 
-	// 5. Enviar e receber mensagens
 	printf("Connection accepted!\n");
+
+	// 5. Enviar e receber mensagens
+// Pede o nome
+	char *nome = "Digite seu nome: ";
+	send(new_socket , nome , strlen(nome) , 0 );
+	valread = read(new_socket, buffer, BUFFER_SIZE);
+        printf("Nome recebido: %s", buffer);
+// Pede a idade
+	char *idade = "Digite sua idade: ";
+	send(new_socket , idade , strlen(idade) , 0 );
+	memset(buffer,0,strlen(buffer)); // Limpando o buffer
+	valread = read(new_socket, buffer, BUFFER_SIZE);
+	printf("Idade recebida: %s",buffer);
+// Pede a altura
+	char *altura = "Digite sua altura: ";
+	send(new_socket , altura , strlen(altura) , 0 );
+	memset(buffer,0,strlen(buffer)); // Limpando o buffer   
+	valread = read(new_socket, buffer, BUFFER_SIZE);
+	printf("Altura recebida: %s",buffer);
+
+	send(new_socket , "Obrigado!" , 10 , 0 );
+
+        
+/*
 	valread = read( new_socket , buffer, BUFFER_SIZE);
 	printf("Mensagem recebida: %s\n",buffer );
 	send(new_socket , hello , strlen(hello) , 0 );
 	printf("Server message sent\n");
-
+*/
 
 	// 6. Fechar conexões
 	close(new_socket); // Fecha a conexão com o cliente
