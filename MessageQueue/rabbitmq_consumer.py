@@ -14,7 +14,7 @@ params = pika.URLParameters(url)
 
 connection = pika.BlockingConnection(params)
 channel = connection.channel() # Inicia um canal
-channel.queue_declare(queue='pdfprocess')
+channel.queue_declare(queue='pdfprocess_aula')
 
 # Função a ser chamada quando uma mensagem chega
 def processa_msg(ch,method,properties,body):
@@ -22,7 +22,7 @@ def processa_msg(ch,method,properties,body):
 
 
 # Configura a assinatura (subscribe) na fila
-channel.basic_consume('pdfprocess', processa_msg, auto_ack=True)
+channel.basic_consume('pdfprocess_aula', processa_msg, auto_ack=True)
 
 
 # Inicia o consumo (blocos)

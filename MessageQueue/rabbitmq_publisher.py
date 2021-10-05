@@ -10,10 +10,13 @@ params.socket_timeout = 5 # Altera o timeout de 0.25s para 5s evitar problemas d
 # Estabelecendo a conexao, o canal e a fila
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.queue_declare(queue='pdfprocess')
+channel.queue_declare(queue='pdfprocess_aula')
 
-# Enviando uma mensagem
-channel.basic_publish(exchange='',routing_key='pdfprocess',body=sys.argv[1])
+# Enviando uma mensagem (exchange=default, ....,...)
+#channel.basic_publish(exchange='',routing_key='pdfprocess',body=sys.argv[1])
+
+# Envio para o exchange 'professor'
+channel.basic_publish(exchange='professor',routing_key='pdfprocess_aula',body=sys.argv[1])
 print("[x] Mensagem enviada para o consumidor")
 
 connection.close()
